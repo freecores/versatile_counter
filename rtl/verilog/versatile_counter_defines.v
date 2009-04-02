@@ -11,6 +11,9 @@
 // for gray type counter optional binary output
 `define CNT_Q_BIN
 
+// up/down, forward/rewind
+`define CNT_REW
+
 // number of CNT bins
 `define CNT_LENGTH 4
 
