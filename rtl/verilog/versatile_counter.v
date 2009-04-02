@@ -5,7 +5,7 @@
 module `CNT_MODULE_NAME
   (
 `ifdef CNT_TYPE_GRAY
-   output reg [`CNT_LENGTH:1] q,
+    output reg [`CNT_LENGTH:1] q,
  `ifdef CNT_Q_BIN
     output [`CNT_LENGTH:1]    q_bin,
  `endif
@@ -40,9 +40,15 @@ module `CNT_MODULE_NAME
    );
    
 `ifdef CNT_SET
+ `ifndef CNT_SET_VALUE
+  `define CNT_SET_VALUE 0
+ `endif
    parameter set_value = `CNT_SET_VALUE;
 `endif
 `ifdef CNT_WRAP
+ `ifndef CNT_WRAP_VALUE
+  `define CNT_WRAP_VALUE 0
+ `endif
    parameter wrap_value = `CNT_WRAP_VALUE;
 `endif   
 
