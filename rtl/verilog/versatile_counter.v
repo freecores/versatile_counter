@@ -133,7 +133,7 @@ module `CNT_MODULE_NAME
 `ifdef CNT_ZQ
    always @ (posedge clk or posedge rst)
      if (rst)
-       zq <= 1'b0;
+       zq <= 1'b1;
      else
  `ifdef CNT_CE
        if (cke)
