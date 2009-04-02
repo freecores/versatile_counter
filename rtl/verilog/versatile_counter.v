@@ -6,6 +6,9 @@ module `CNT_MODULE_NAME
   (
 `ifdef CNT_TYPE_GRAY
    output reg [`CNT_LENGTH:1] q,
+ `ifdef CNT_Q_BIN
+    output [`CNT_LENGTH:1]    q_bin,
+ `endif
 `else   
  `ifdef CNT_Q
     output [`CNT_LENGTH:1]    q,
@@ -115,6 +118,9 @@ module `CNT_MODULE_NAME
        if (cke)
   `endif
 	 q <= (q_next>>1) ^ q_next;
+  `ifdef CNT_Q_BIN
+   assign q_bin = qi;
+  `endif
  `else
    assign q = q_next;
  `endif

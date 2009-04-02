@@ -8,6 +8,8 @@
 
 // q as output
 `define CNT_Q
+// for gray type counter optional binary output
+`define CNT_Q_BIN
 
 // number of CNT bins
 `define CNT_LENGTH 4
