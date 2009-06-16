@@ -106,7 +106,7 @@ module `CNT_MODULE_NAME
 `ifdef CNT_CE
    if (cke)
 `endif
-     qi <= q_next;xs
+     qi <= q_next;
 
 `ifdef CNT_Q
  `ifdef CNT_TYPE_GRAY
