@@ -106,13 +106,13 @@ module `CNT_MODULE_NAME
 `ifdef CNT_CE
    if (cke)
 `endif
-     qi <= q_next;
+     qi <= q_next;xs
 
 `ifdef CNT_Q
  `ifdef CNT_TYPE_GRAY
    always @ (posedge clk or posedge rst)
      if (rst)
-       q <= `CNT_LENGTH'd0;
+       q <= `CNT_RESET_VALUE;
      else
   `ifdef CNT_CE
        if (cke)

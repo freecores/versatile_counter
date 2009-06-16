@@ -17,6 +17,9 @@
 // number of CNT bins
 `define CNT_LENGTH 4
 
+// async reset value
+`define CNT_RESET_VALUE `CNT_LENGTH'h0
+
 // clear
 `define CNT_CLEAR
 
