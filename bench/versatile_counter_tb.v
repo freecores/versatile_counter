@@ -51,7 +51,7 @@ module lfsr_tb
       .clear(clear),
       .cke(cke),
       .set(set),
-//      .rew(rew),
+      .rew(rew),
       .q(),
 //      .q_next(),
 //      .z(),

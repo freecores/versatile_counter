@@ -1,3 +1,3 @@
 all:
-	vpp versatile_counter.v > tmp1.v
-	vppreproc --simple tmp1.v | cat copyright.v - > counter.v
+	excel2csv vc.xls -S ,
+	./versatile_counter_generator.php Versatile_counter.csv > vc.v

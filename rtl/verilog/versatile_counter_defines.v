@@ -18,18 +18,18 @@
 `define CNT_LENGTH 4
 
 // async reset value
-`define CNT_RESET_VALUE `CNT_LENGTH'h0
+`define CNT_RESET_VALUE 0
 
 // clear
 `define CNT_CLEAR
 
 // set
 `define CNT_SET
-`define CNT_SET_VALUE `CNT_LENGTH'h9
+`define CNT_SET_VALUE 9
 
 // wrap around creates shorter cycle than maximum length
 //`define CNT_WRAP
-`define CNT_WRAP_VALUE `CNT_LENGTH'h9
+`define CNT_WRAP_VALUE 9
 
 // clock enable
 `define CNT_CE
@@ -43,3 +43,10 @@
 // q_next=0 as a registered output
 //`define CNT_ZQ
 
+// level indicator 1
+`define CNT_LEVEL1
+`define CNT_LEVEL1_VALUE 1
+
+// level indicator 2
+`define CNT_LEVEL2
+`define CNT_LEVEL2_VALUE 2
