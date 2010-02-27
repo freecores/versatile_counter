@@ -80,7 +80,7 @@ if ($inputs['cke']=="1")   { echo "cke, "; }
 if ($inputs['rew']=="1")   { echo " rew,"; }
 
 if ($outputs['q']=="1")      { echo " q,"; }
-if ($outputs['q_bin']=="1")  { echo "q_bin,"; }
+if ($outputs['q_bin']=="1")  { echo " q_bin,"; }
 if ($outputs['z']=="1")      { echo " z,"; }
 if ($outputs['zq']=="1")     { echo " zq,"; }
 if ($outputs['level1']=="1") { echo " level1,"; }
@@ -116,7 +116,7 @@ echo PHP_EOL;
 
 echo PHP_EOL . "   reg  [length:1] qi;" . PHP_EOL;
 if ($counter['type']=="LFSR") { echo "   reg lfsr_fb";}
-if ($counter['type']=="LFSR" and $inputs['rew']==1) { echo ", lfsr_fb_rew;" . PHP_EOL; } else { echo ";" . PHP_EOL; }
+if ($counter['type']=="LFSR" and $inputs['rew']==1) { echo ", lfsr_fb_rew;" . PHP_EOL; } else { if ($counter['type']=="LFSR") echo ";" . PHP_EOL; }
 if ($inputs['rew']==1) { echo "   wire  [length:1] q_next, q_next_fw, q_next_rew;" . PHP_EOL; }
 else { echo "   wire [length:1] q_next;" . PHP_EOL; }
 if ($counter['type']=="LFSR" and $inputs['rew']==1) {
