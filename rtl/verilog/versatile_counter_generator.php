@@ -108,11 +108,11 @@ echo "   input rst;" . PHP_EOL;
 echo "   input clk;" . PHP_EOL;
 echo PHP_EOL;
 
-    if ($parameters['clear_value']!="") { echo "   parameter clear_value = " . $parameters['clear_value'] . ";" . PHP_EOL; }
-    if ($parameters['set_value']!="")      { echo "   parameter set_value = " . $parameters['set_value'] . ";" . PHP_EOL; }
-    if ($parameters['wrap_value']!="")   { echo "   parameter wrap_value = " . $parameters['wrap_value'] . ";" . PHP_EOL; }
-    if ($parameters['level1']!="")      { echo "   parameter level1_value = " . $parameters['level1'] . ";" . PHP_EOL; }
-    if ($parameters['level2']!="")      { echo "   parameter level2_value = " . $parameters['level2'] . ";" . PHP_EOL; }
+    if ($parameters['clear_value']=="1") { echo "   parameter clear_value = " . $parameters['clear_value'] . ";" . PHP_EOL; }
+    if ($parameters['set_value']=="1")   { echo "   parameter set_value = " . $parameters['set_value'] . ";" . PHP_EOL; }
+    if ($parameters['wrap_value']=="1")  { echo "   parameter wrap_value = " . $parameters['wrap_value'] . ";" . PHP_EOL; }
+    if ($parameters['level1']=="1")      { echo "   parameter level1_value = " . $parameters['level1'] . ";" . PHP_EOL; }
+    if ($parameters['level2']=="")      { echo "   parameter level2_value = " . $parameters['level2'] . ";" . PHP_EOL; }
 
 echo PHP_EOL . "   reg  [length:1] qi;" . PHP_EOL;
 if ($counter['type']=="LFSR") { echo "   reg lfsr_fb";}
