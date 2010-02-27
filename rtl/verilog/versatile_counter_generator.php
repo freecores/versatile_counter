@@ -88,6 +88,7 @@ if ($outputs['level2']=="1") { echo " level2,"; }
     
 echo " rst,";
 echo " clk);" . PHP_EOL;
+echo PHP_EOL;
 
 echo "   parameter length = " . $length . ";" . PHP_EOL;
 
