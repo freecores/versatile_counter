@@ -80,7 +80,7 @@ if ($inputs['cke']=="1")   { echo " cke,"; }
 if ($inputs['rew']=="1")   { echo " rew,"; }
 
 if ($outputs['q']=="1")      { echo " q,"; }
-if ($outputs['q_bin']=="1")  { echo " q_bin,"; }
+if ($outputs['q_bin']=="1" and $counter['type']=="GRAY")  { echo " q_bin,"; }
 if ($outputs['z']=="1")      { echo " z,"; }
 if ($outputs['zq']=="1")     { echo " zq,"; }
 if ($outputs['level1']=="1") { echo " level1,"; }
