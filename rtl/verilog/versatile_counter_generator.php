@@ -74,9 +74,9 @@ echo "//////////////////////////////////////////////////////////////////////" . 
 echo PHP_EOL . "// " . $counter['type'] . " counter" . PHP_EOL;
 echo "module " . $counter['Name']. " (";
 
-if ($inputs['clear']=="1") { echo "clear,"; }
+if ($inputs['clear']=="1") { echo " clear,"; }
 if ($inputs['set']=="1")   { echo " set,"; }
-if ($inputs['cke']=="1")   { echo "cke, "; }
+if ($inputs['cke']=="1")   { echo " cke,"; }
 if ($inputs['rew']=="1")   { echo " rew,"; }
 
 if ($outputs['q']=="1")      { echo " q,"; }
@@ -252,12 +252,13 @@ echo PHP_EOL;
 
 if ($outputs['q']) {
     if ($counter['type'] == "GRAY" or $counter['type'] == "gray") {
-        echo "always @ (posedge clk or posedge rst)
+        echo "   always @ (posedge clk or posedge rst)
      if (rst)
-       q <= (q_next>>1) ^ q_next;
+       q <= {length{1'b0}};
      else" . PHP_EOL;
         if ($inputs['cke']) { echo "       if (cke)" . PHP_EOL; }
         echo "         q <= (q_next>>1) ^ q_next;" . PHP_EOL;
+        if ($outputs['q_bin']) { echo PHP_EOL . "   assign q_bin = qi;" . PHP_EOL; }
     } else {
         echo "   assign q = qi;" . PHP_EOL;
     }
