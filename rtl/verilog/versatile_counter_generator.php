@@ -101,7 +101,7 @@ if ($counter['type']=="GRAY") {
 } else {
     if ($outputs['q']=="1")      { echo "   output [length:1] q;" . PHP_EOL; }
 }
-if ($outputs['q_bin']=="1")  { echo "   output [length:1] q_bin;" . PHP_EOL; }
+if ($outputs['q_bin']=="1" and $counter['type']=="GRAY")  { echo "   output [length:1] q_bin;" . PHP_EOL; }
 if ($outputs['z']=="1")      { echo "   output z;" . PHP_EOL; }
 if ($outputs['zq']=="1")     { echo "   output reg zq;" . PHP_EOL; }
 if ($outputs['level1']=="1") { echo "   output reg level1;" . PHP_EOL; }
