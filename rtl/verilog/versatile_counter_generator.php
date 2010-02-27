@@ -97,7 +97,11 @@ if ($inputs['set']=="1")   { echo "   input " . "set;" . PHP_EOL; }
 if ($inputs['cke']=="1")   { echo "   input " . "cke;" . PHP_EOL; }
 if ($inputs['rew']=="1")   { echo "   input " . "rew;" . PHP_EOL; }
 
-if ($outputs['q']=="1")      { echo "   output [length:1] q;" . PHP_EOL; }
+if ($counter['type']=="GRAY") {
+    if ($outputs['q']=="1")      { echo "   output reg [length:1] q;" . PHP_EOL; }    
+} else {
+    if ($outputs['q']=="1")      { echo "   output [length:1] q;" . PHP_EOL; }
+}
 if ($outputs['q_bin']=="1")  { echo "   output [length:1] q_bin;" . PHP_EOL; }
 if ($outputs['z']=="1")      { echo "   output z;" . PHP_EOL; }
 if ($outputs['zq']=="1")     { echo "   output reg zq;" . PHP_EOL; }
@@ -176,7 +180,7 @@ if ($inputs['rew']!=1) { echo "   assign q_next = "; } else { echo "   assign q_
 if ($inputs['clear']==1)  { echo " clear ? {length{1'b0}} :";}
 if ($inputs['set']==1)    { echo " set ? set_value :";}
 if ($wrap['wrap']==1)     { echo "(qi == wrap_value) ? {length{1'b0}} :";}
-if ($counter['type']=="LFSR") { echo "{qi[length-1:1],lfsr_fb};"; } else { echo "qi + length'd1;"; }
+if ($counter['type']=="LFSR") { echo "{qi[length-1:1],lfsr_fb};"; } else { echo "qi + 1;"; }
 echo PHP_EOL;
 
 if ($inputs['rew']) {
@@ -232,7 +236,7 @@ echo PHP_EOL;
     if ($inputs['clear']==1)  { echo " clear ? clear_value :";}
     if ($inputs['set']==1)    { echo " set ? set_value :";}
     if ($wrap['wrap']==1)     { echo "(qi == wrap_value) ? {length{1'b0}} :";}
-    if ($counter['type']=="LFSR") { echo "{lfsr_fb_rew,qi[length:2]};"; } else { echo "qi - length'd1;"; }
+    if ($counter['type']=="LFSR") { echo "{lfsr_fb_rew,qi[length:2]};"; } else { echo "qi - 1;"; }
     echo PHP_EOL;
     echo "   assign q_next = rew ? q_next_rew : q_next_fw;" . PHP_EOL;
 } 
@@ -243,16 +247,17 @@ echo "
        qi <= {length{1'b0}};
      else" . PHP_EOL;
 if ($inputs['cke']) { echo "     if (cke)" . PHP_EOL;}
-echo "      qi <= q_next;" . PHP_EOL;
+echo "       qi <= q_next;" . PHP_EOL;
 echo PHP_EOL;
 
 if ($outputs['q']) {
     if ($counter['type'] == "GRAY" or $counter['type'] == "gray") {
         echo "always @ (posedge clk or posedge rst)
      if (rst)
-       q <= ;
-     else";
-    if ($inputs['cke']) { echo "   if (cke)" . PHP_EOL; }
+       q <= (q_next>>1) ^ q_next;
+     else" . PHP_EOL;
+        if ($inputs['cke']) { echo "       if (cke)" . PHP_EOL; }
+        echo "         q <= (q_next>>1) ^ q_next;" . PHP_EOL;
     } else {
         echo "   assign q = qi;" . PHP_EOL;
     }
