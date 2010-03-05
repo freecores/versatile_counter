@@ -180,7 +180,7 @@ if ($inputs['rew']!=1) { echo "   assign q_next = "; } else { echo "   assign q_
 if ($inputs['clear']==1)  { echo " clear ? {length{1'b0}} :";}
 if ($inputs['set']==1)    { echo " set ? set_value :";}
 if ($wrap['wrap']==1)     { echo "(qi == wrap_value) ? {length{1'b0}} :";}
-if ($counter['type']=="LFSR") { echo "{qi[length-1:1],lfsr_fb};"; } else { echo "qi + 1;"; }
+if ($counter['type']=="LFSR") { echo "{qi[length-1:1],lfsr_fb};"; } else { echo "qi + {{length-1{1'b0}},1'b1};"; }
 echo PHP_EOL;
 
 if ($inputs['rew']) {
@@ -236,7 +236,7 @@ echo PHP_EOL;
     if ($inputs['clear']==1)  { echo " clear ? clear_value :";}
     if ($inputs['set']==1)    { echo " set ? set_value :";}
     if ($wrap['wrap']==1)     { echo "(qi == wrap_value) ? {length{1'b0}} :";}
-    if ($counter['type']=="LFSR") { echo "{lfsr_fb_rew,qi[length:2]};"; } else { echo "qi - 1;"; }
+    if ($counter['type']=="LFSR") { echo "{lfsr_fb_rew,qi[length:2]};"; } else { echo "qi - {{length-1{1'b0}},1'b1};"; }
     echo PHP_EOL;
     echo "   assign q_next = rew ? q_next_rew : q_next_fw;" . PHP_EOL;
 } 
