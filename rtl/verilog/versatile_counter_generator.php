@@ -286,7 +286,7 @@ if ($outputs['level1']) {
     if ($inputs['cke']) { echo "    if (cke)" . PHP_EOL; }
     echo "    if (q_next == level1_value)
         level1 <= 1'b1;
-    else if (q == level1_value & rew)
+    else if (qi == level1_value & rew)
         level1 <= 1'b0;" . PHP_EOL;
 }
 
@@ -299,7 +299,7 @@ if ($outputs['level2']) {
     if ($inputs['cke']) { echo "    if (cke)" . PHP_EOL; }
     echo "    if (q_next == level2_value)
         level2 <= 1'b1;
-    else if (q == level2_value & rew)
+    else if (qi == level2_value & rew)
         level2 <= 1'b0;" . PHP_EOL;
 }
 
