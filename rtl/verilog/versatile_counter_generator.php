@@ -118,7 +118,11 @@ echo PHP_EOL;
     if ($parameters['level1']!="")      { echo "   parameter level1_value = " . $parameters['level1'] . ";" . PHP_EOL; }
     if ($parameters['level2']!="")      { echo "   parameter level2_value = " . $parameters['level2'] . ";" . PHP_EOL; }
 
-echo PHP_EOL . "   reg  [length:1] qi;" . PHP_EOL;
+echo PHP_EOL;
+if ($outputs['level1']=="1" and $inputs['clear']=="0") { echo  "   wire clear;" . PHP_EOL . "   assign clear = 1'b0;" . PHP_EOL; }
+if ($outputs['level1']=="1" and $inputs['rew']=="0") { echo  "   wire rew;" . PHP_EOL . "   assign rew = 1'b0;" . PHP_EOL; }
+
+echo "   reg  [length:1] qi;" . PHP_EOL;
 if ($counter['type']=="LFSR") { echo "   reg lfsr_fb";}
 if ($counter['type']=="LFSR" and $inputs['rew']==1) { echo ", lfsr_fb_rew;" . PHP_EOL; } else { if ($counter['type']=="LFSR") echo ";" . PHP_EOL; }
 if ($inputs['rew']==1) { echo "   wire  [length:1] q_next, q_next_fw, q_next_rew;" . PHP_EOL; }
@@ -284,7 +288,9 @@ if ($outputs['level1']) {
         level1 <= 1'b0;
     else" . PHP_EOL;
     if ($inputs['cke']) { echo "    if (cke)" . PHP_EOL; }
-    echo "    if (q_next == level1_value)
+    echo "    if (clear)
+        level1 <= 1'b0;
+    else if (q_next == level1_value)
         level1 <= 1'b1;
     else if (qi == level1_value & rew)
         level1 <= 1'b0;" . PHP_EOL;
@@ -297,7 +303,9 @@ if ($outputs['level2']) {
         level2 <= 1'b0;
     else" . PHP_EOL;
     if ($inputs['cke']) { echo "    if (cke)" . PHP_EOL; }
-    echo "    if (q_next == level2_value)
+    echo "    if (clear)
+        level2 <= 1'b0;
+    else if (q_next == level2_value)
         level2 <= 1'b1;
     else if (qi == level2_value & rew)
         level2 <= 1'b0;" . PHP_EOL;
